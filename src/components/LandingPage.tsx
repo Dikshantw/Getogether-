@@ -58,7 +58,10 @@ const LandingPage = () => {
         </button>
         <div className=" ml-32 mt-28">
           <p>
-            Existing user? <strong>Log in</strong>
+            Existing user?{" "}
+            <button onClick={() => navigate("/signin")}>
+              <strong>Log in</strong>
+            </button>
           </p>
         </div>
       </div>
