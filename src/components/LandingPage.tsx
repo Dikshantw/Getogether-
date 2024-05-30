@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center items-center">
       <div className="w-[393px] h-[725px] bg-[#fdcdcd]">
@@ -8,7 +11,10 @@ const LandingPage = () => {
         <p className="w-[203px] text-xs ml-7 mt-5">
           Communication between hosts, guests and vendors and much more...
         </p>
-        <button className="bg-[#fa7f84] text-[#fdccd5] rounded-2xl py-4 px-24 ml-7 mt-9">
+        <button
+          className="bg-[#fa7f84] text-[#fdccd5] rounded-2xl py-4 px-24 ml-7 mt-9"
+          onClick={() => navigate("/signup")}
+        >
           Sign up with Email
         </button>
         <div className="flex justify-center items-center w-[304px] h-4 ml-9 mt-5">
