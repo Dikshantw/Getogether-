@@ -7,6 +7,7 @@ import Chat from "./components/Chat";
 import GuestList from "./components/GuestList";
 import Planner from "./components/Planner";
 import Profile from "./components/Profile";
+import Vendors from "./components/Vendors";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
           <Route path={"/chat"} element={<Chat />}></Route>
           <Route path={"/guestlist"} element={<GuestList />}></Route>
           <Route path={"/planner"} element={<Planner />}></Route>
+          <Route path={"/vendors"} element={<Vendors />}></Route>
           <Route path={"/profile"} element={<Profile />}></Route>
         </Routes>
       </Router>
