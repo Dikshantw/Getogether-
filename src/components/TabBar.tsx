@@ -10,7 +10,7 @@ const TabBar = () => {
 `;
   return (
     <>
-      <div className="flex justify-center items-center mt-[642px] mx-2 w-[375px] h-[80px]">
+      <div className="flex justify-center items-center absolute mt-[642px] mx-2 w-[375px] h-[80px]">
         <Link
           to="/chat"
           className={`${tabItem} ${
