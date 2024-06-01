@@ -49,7 +49,9 @@ const Chat = () => {
           </div>
           <EventTab />
           <InviteButton />
-          <TabBar />
+          <div className="absolute bottom-0 w-full">
+            <TabBar />
+          </div>
         </div>
       </div>
     </>
