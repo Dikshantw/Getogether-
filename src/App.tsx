@@ -8,6 +8,8 @@ import GuestList from "./components/GuestList";
 import Planner from "./components/Planner";
 import Profile from "./components/Profile";
 import Vendors from "./components/Vendors";
+import VendorInvite from "./components/VendorInvite";
+import GuestInvite from "./components/GuestInvite";
 function App() {
   return (
     <>
@@ -21,6 +23,8 @@ function App() {
           <Route path={"/planner"} element={<Planner />}></Route>
           <Route path={"/vendors"} element={<Vendors />}></Route>
           <Route path={"/profile"} element={<Profile />}></Route>
+          <Route path={"/vendor-invite"} element={<VendorInvite />}></Route>
+          <Route path={"/guest-invite"} element={<GuestInvite />}></Route>
         </Routes>
       </Router>
     </>
