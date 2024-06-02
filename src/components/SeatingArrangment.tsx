@@ -6,6 +6,7 @@ import Table from "../assets/Table";
 import RoundTable from "../assets/RoundTable";
 import DraggableItem from "./DraggableItem";
 import DropZone from "./Dropzone";
+import Tooltip from "./Tooltip";
 
 const ItemTypes = {
   CHAIR: "CHAIR",
@@ -37,10 +38,17 @@ const DraggableSource: React.FC<DraggableSourceProps> = ({
 interface Item {
   type: string;
   position: { x: number; y: number };
+  guestName: string;
 }
 
 const SeatingArrangment: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
+  const [tooltip, setTooltip] = useState<{
+    visible: boolean;
+    x: number;
+    y: number;
+    index: number;
+  } | null>(null);
 
   const handleDrop = (
     type: string,
@@ -48,8 +56,24 @@ const SeatingArrangment: React.FC = () => {
   ) => {
     if (position) {
       const position = { x: event.clientX - 600, y: event.clientY - 220 };
-      setItems([...items, { type, position }]);
+      setItems([...items, { type, position, guestName: "" }]);
     }
+  };
+
+  const handleClick = (index: number, x: number, y: number) => {
+    setTooltip({ visible: true, x, y, index });
+  };
+
+  const handleSaveGuestName = (guestName: string) => {
+    if (tooltip) {
+      const newItems = [...items];
+      newItems[tooltip.index].guestName = guestName;
+      setItems(newItems);
+    }
+  };
+
+  const handleCloseTooltip = () => {
+    setTooltip(null);
   };
 
   return (
@@ -83,6 +107,7 @@ const SeatingArrangment: React.FC = () => {
                   <DraggableItem
                     key={index}
                     defaultPosition={{ x: position.x, y: position.y }}
+                    onClick={(e) => handleClick(index, position.x, position.y)}
                   >
                     <Component />
                   </DraggableItem>
@@ -90,6 +115,15 @@ const SeatingArrangment: React.FC = () => {
               );
             })}
           </DropZone>
+          {tooltip && tooltip.visible && (
+            <Tooltip
+              x={tooltip.x}
+              y={tooltip.y}
+              guestName={items[tooltip.index].guestName}
+              onSave={handleSaveGuestName}
+              onClose={handleCloseTooltip}
+            />
+          )}
         </div>
       </div>
     </DndProvider>
