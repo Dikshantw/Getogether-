@@ -1,3 +1,4 @@
+import Contacts from "./Contacts";
 import EventTab from "./EventTab";
 import InviteButton from "./InviteButton";
 import TabBar from "./TabBar";
@@ -5,7 +6,7 @@ import TabBar from "./TabBar";
 const Chat = () => {
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div className="relative flex justify-center items-center">
         <div
           className="absolute w-[393px] h-[725px] bg-white"
           style={{ top: "0px" }}
@@ -48,6 +49,10 @@ const Chat = () => {
             </div>
           </div>
           <EventTab />
+          <div className="absolute z-10 top-0 w-full">
+            <Contacts />
+          </div>
+
           <InviteButton />
           <div className="absolute bottom-0 w-full">
             <TabBar />
